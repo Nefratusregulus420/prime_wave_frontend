@@ -91,10 +91,12 @@ export default function Contact() {
 
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [serverMessage, setServerMessage] = useState<string>("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
+    setServerMessage("");
     try {
       const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:5001";
       const res = await fetch(`${apiBaseUrl}/api/contact`, {
@@ -102,17 +104,21 @@ export default function Contact() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form)
       });
-      if (res.ok) {
+      const data = await res.json().catch(() => ({} as any));
+      if (res.ok && (data?.success ?? true)) {
         setStatus("success");
+        setServerMessage(data?.message || "Message sent.");
         setForm({ name: "", email: "", message: "" });
         setTimeout(() => setStatus("idle"), 3000);
       } else {
         setStatus("error");
+        setServerMessage(data?.error || data?.message || "Failed to send message.");
         setTimeout(() => setStatus("idle"), 3000);
       }
     } catch (err) {
       console.error(err);
       setStatus("error");
+      setServerMessage("Network/server error while sending message.");
       setTimeout(() => setStatus("idle"), 3000);
     }
   };
@@ -511,7 +517,12 @@ export default function Contact() {
 
               {status === "error" && (
                 <div style={{ color: "#ef5350", fontSize: "0.85rem", marginTop: 4 }}>
-                  Ensure the SMTP server is running and configured with App Passwords.
+                  {serverMessage || "Ensure the SMTP server is running and configured with App Passwords."}
+                </div>
+              )}
+              {status === "success" && serverMessage && (
+                <div style={{ color: t.textMuted, fontSize: "0.85rem", marginTop: 4 }}>
+                  {serverMessage}
                 </div>
               )}
             </motion.form>
