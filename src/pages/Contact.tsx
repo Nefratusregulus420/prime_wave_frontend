@@ -56,7 +56,7 @@ function TickerBar() {
 }
 
 // ─── Section label helper ─────────────────────────────────────────────────────
-function SectionLabel({ text, t }: { text: string; t: ReturnType<typeof tokens[keyof typeof tokens] extends infer T ? T extends object ? () => T : never : never> | any }) {
+function SectionLabel({ text, t }: { text: string; t: any }) {
   return (
     <div
       style={{

@@ -88,51 +88,37 @@ export default function Navbar({ current, navigate }: NavbarProps) {
               cursor: "pointer",
               display: "flex",
               alignItems: "center",
-              gap: 10,
+              gap: 8,
               padding: 0,
               minWidth: 0,
-              flex: "1 1 auto",
-              overflow: "hidden",
+              flex: "0 0 auto",
             }}
           >
             <img
               src={Logo}
               alt="PrimeWave Logo"
               style={{
-                height: 40,
-                width: "auto",
+                height: 38,
+                width: 38,
                 borderRadius: 8,
-                objectFit: "contain",
+                objectFit: "cover",
+                objectPosition: "top",
                 flexShrink: 0,
+                background: "#000",
+                padding: "3px"
               }}
             />
             <span
               className="nav-logo-text"
               style={{
                 fontWeight: 800,
-                fontSize: "1.05rem",
+                fontSize: "1rem",
                 color: t.text,
                 letterSpacing: "-0.02em",
                 whiteSpace: "nowrap",
-                overflow: "hidden",
-                textOverflow: "ellipsis",
-                minWidth: 0,
               }}
             >
-              PrimeWave Lifestyle &amp; Electronics
-            </span>
-            <span
-              style={{
-                fontSize: "0.58rem",
-                fontWeight: 600,
-                color: t.accent,
-                padding: "1px 5px",
-                border: `1px solid ${t.accent}35`,
-                borderRadius: 4,
-                flexShrink: 0,
-              }}
-            >
-              v2.0
+              PrimeWave
             </span>
           </motion.button>
 
@@ -145,18 +131,18 @@ export default function Navbar({ current, navigate }: NavbarProps) {
                 key={l.id}
                 onClick={() => handleNav(l.id)}
                 style={{
-                  fontSize: "0.76rem",
-                  fontWeight: 600,
-                  letterSpacing: "0.08em",
+                  fontSize: "0.82rem",
+                  fontWeight: 800,
+                  letterSpacing: "0.1em",
                   textTransform: "uppercase",
-                  padding: "8px 14px",
+                  padding: "6px 14px",
                   borderRadius: 6,
                   cursor: "pointer",
-                  transition: "color 0.2s",
                   border: "none",
                   background: "transparent",
-                  color: current === l.id ? t.text : t.textSubtle,
+                  color: current === l.id ? "#2563eb" : t.textSubtle,
                   position: "relative",
+                  transition: "color 0.3s ease",
                 }}
                 onMouseEnter={(e) => {
                   if (current !== l.id) {
@@ -187,12 +173,6 @@ export default function Navbar({ current, navigate }: NavbarProps) {
                 <span style={{ position: "relative", zIndex: 1 }}>{l.label}</span>
               </motion.button>
             ))}
-            <motion.div
-              initial={{ height: 0 }}
-              animate={{ height: 18 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-              style={{ width: 1, background: t.border, margin: "0 8px" }}
-            />
             <ThemeToggle />
           </div>
 

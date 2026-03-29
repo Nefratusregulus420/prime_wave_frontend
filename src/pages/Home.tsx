@@ -96,8 +96,8 @@ export default function Home({ navigate }: HomeProps) {
   const termResult = isDark ? "#cbd5e1" : "#475569";
 
   const businesses = [
-    { id: "retail", name: "E-Commerce of Fashion (Vastrra)", desc: "Fashion & Apparel", icon: "👗", color: "#ce93d8" },
-    { id: "electronics", name: "E-Commerce of Electronics (Electronic)", desc: "Electronics & Gadgets", icon: "⚡", color: t.accentBlue },
+    { id: "fashion", name: "E-Commerce of Fashion (Vastrra)", desc: "Fashion & Apparel", icon: "👗", color: "#ce93d8" },
+    { id: "electronics", name: "E-Commerce of Electronics (Electron)", desc: "Electronics & Gadgets", icon: "⚡", color: t.accentBlue },
   ];
 
   return (

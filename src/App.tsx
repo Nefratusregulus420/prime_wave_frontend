@@ -33,92 +33,116 @@ export default function App() {
       overflowX: "hidden",
       background: t.bg,
     }}>
-      {/* Starry Night CSS Background Layer for entire website */}
+      {/* Theme-based Background Layer */}
       <div
         style={{
           position: "fixed",
           inset: 0,
-          background: t.bg,
           overflow: "hidden",
           pointerEvents: "none",
           zIndex: -1,
         }}
       >
-        {/* Core background gradient */}
-        <div style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(ellipse at top left, #6b8cce 0%, transparent 50%),
-                       radial-gradient(ellipse at bottom right, #8a63e5 0%, transparent 50%),
-                       radial-gradient(ellipse at top right, #51d0ff 0%, transparent 50%),
-                       linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%)`,
-          opacity: isDark ? 0.8 : 0.6,
-        }} />
+        {isDark ? (
+          /* ── DARK: Deep space / starry night ──────────────── */
+          <>
+            {/* Deep navy space base */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: `linear-gradient(160deg, #08081a 0%, #0b0e24 40%, #070b1e 100%)`,
+            }} />
 
-        {/* Scattered Stars with CSS shadows */}
-        <div
-          style={{
-            position: "absolute",
-            width: 2,
-            height: 2,
-            background: "transparent",
-            boxShadow: `
-              10vw 20vh 1px #fff, 20vw 10vh 2px #fff, 
-              30vw 40vh 1px #fff, 40vw 30vh 1.5px #fff, 
-              50vw 80vh 1px #fff, 60vw 60vh 2px #fff, 
-              70vw 20vh 1px #fff, 80vw 50vh 1px #fff, 
-              90vw 80vh 1.5px #fff, 95vw 10vh 2px #fff,
-              15vw 60vh 1px #fff, 35vw 70vh 1px #fff,
-              65vw 15vh 1.5px #fff, 85vw 35vh 1px #fff,
-              25vw 85vh 2px #fff, 45vw 15vh 1px #fff
-            `,
-            animation: "twinkle 4s infinite alternate",
-            opacity: 0.8,
-            borderRadius: "50%",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 3,
-            height: 3,
-            background: "transparent",
-            boxShadow: `
-              12vw 82vh 2px #e0f2fe, 32vw 22vh 3px #e0f2fe, 
-              52vw 52vh 2px #e0f2fe, 72vw 72vh 3px #e0f2fe, 
-              92vw 42vh 2px #e0f2fe, 22vw 42vh 2px #e0f2fe
-            `,
-            animation: "twinkle 3s infinite alternate-reverse",
-            opacity: 0.9,
-            borderRadius: "50%",
-          }}
-        />
+            {/* Soft mid-left indigo glow */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: `radial-gradient(ellipse 70% 60% at 20% 60%, rgba(72,52,180,0.45) 0%, transparent 60%),
+                           radial-gradient(ellipse 50% 50% at 80% 15%, rgba(30,90,200,0.35) 0%, transparent 55%)`,
+            }} />
 
-        {/* Nebula/Glow Blobs simulating the reference image's bright spots */}
-        <div
-          style={{
-            position: "absolute",
-            top: "-10%",
-            right: "-5%",
-            width: 800,
-            height: 800,
-            background: `radial-gradient(circle, #c4a5ff66 0%, transparent 60%)`,
-            filter: "blur(80px)",
-            animation: "morphingBlob 20s ease-in-out infinite",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: "-15%",
-            left: "-10%",
-            width: 900,
-            height: 900,
-            background: `radial-gradient(circle, #51d0ff55 0%, transparent 70%)`,
-            filter: "blur(90px)",
-            animation: "morphingBlob 25s ease-in-out infinite reverse",
-          }}
-        />
+            {/* Small bright stars */}
+            <div style={{
+              position: "absolute", width: 1, height: 1, background: "transparent",
+              boxShadow: `
+                5vw 8vh 1px 1px #fff, 14vw 22vh 1px 1px #fff, 23vw 6vh 1px 1px #fff,
+                37vw 43vh 1px 1px #fff, 48vw 71vh 1px 1px #dde, 55vw 14vh 1px 1px #fff,
+                62vw 58vh 1px 1px #fff, 71vw 31vh 1px 1px #fff, 83vw 75vh 1px 1px #eff,
+                91vw 9vh 1px 1px #fff, 96vw 48vh 1px 1px #ddf, 3vw 52vh 1px 1px #fff,
+                18vw 88vh 1px 1px #fff, 29vw 65vh 1px 1px #dde, 43vw 19vh 1px 1px #fff,
+                57vw 92vh 1px 1px #fff, 68vw 7vh 1px 1px #fff, 79vw 56vh 1px 1px #eef,
+                87vw 29vh 1px 1px #fff, 94vw 83vh 1px 1px #ddf
+              `,
+              animation: "twinkle 4s ease-in-out infinite alternate",
+              borderRadius: "50%",
+            }} />
+
+            {/* Larger glowing stars */}
+            <div style={{
+              position: "absolute", width: 2, height: 2, background: "transparent",
+              boxShadow: `
+                8vw 35vh 2px 1px #c4d8ff, 26vw 17vh 2px 1px #b8d0ff,
+                44vw 84vh 2px 1px #cce0ff, 60vw 40vh 2px 1px #c0d4ff,
+                76vw 62vh 2px 1px #b8d0ff, 88vw 18vh 2px 1px #c4d8ff
+              `,
+              animation: "twinkle 6s ease-in-out infinite alternate-reverse",
+              borderRadius: "50%",
+            }} />
+
+            {/* Purple nebula glow top-right */}
+            <div style={{
+              position: "absolute",
+              top: "-15%", right: "-8%",
+              width: 750, height: 750,
+              background: `radial-gradient(circle, rgba(130,70,220,0.35) 0%, rgba(80,40,180,0.15) 40%, transparent 65%)`,
+              filter: "blur(70px)",
+              animation: "morphingBlob 22s ease-in-out infinite",
+            }} />
+
+            {/* Cyan nebula glow bottom-left */}
+            <div style={{
+              position: "absolute",
+              bottom: "-20%", left: "-12%",
+              width: 850, height: 850,
+              background: `radial-gradient(circle, rgba(30,120,220,0.3) 0%, rgba(20,80,160,0.15) 45%, transparent 70%)`,
+              filter: "blur(85px)",
+              animation: "morphingBlob 28s ease-in-out infinite reverse",
+            }} />
+
+            {/* Centre subtle glow for depth */}
+            <div style={{
+              position: "absolute",
+              top: "30%", left: "35%",
+              width: 500, height: 400,
+              background: `radial-gradient(ellipse, rgba(50,80,200,0.18) 0%, transparent 65%)`,
+              filter: "blur(60px)",
+            }} />
+          </>
+        ) : (
+          /* ── LIGHT: Clean white / pale blue ───────────────── */
+          <>
+            {/* Pure white base */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: "#f4f7fc",
+            }} />
+
+            {/* Very soft blue tint at top */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: `radial-gradient(ellipse 100% 55% at 50% 0%, rgba(214,228,255,0.7) 0%, transparent 60%)`,
+            }} />
+
+            {/* Faint right-side accent */}
+            <div style={{
+              position: "absolute",
+              inset: 0,
+              background: `radial-gradient(ellipse 50% 60% at 95% 0%, rgba(200,218,255,0.45) 0%, transparent 55%)`,
+            }} />
+          </>
+        )}
       </div>
 
       <Navbar current={page} navigate={navigate} />

@@ -247,7 +247,7 @@ export default function Purpose() {
             </motion.div>
           </div>
 
-          <div className="grid-founders" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 18 }}>
+          <div className="grid-founders" style={{ display: "grid", gridTemplateColumns: "repeat(5, 1fr)", gap: 18, justifyItems: "center" }}>
             {founders.slice(1).map((f) => (
               <motion.div
                 variants={itemVariants}
@@ -259,7 +259,7 @@ export default function Purpose() {
                 }}
                 key={f.name}
                 onClick={() => setSelectedFounder({ image: f.image, name: f.name })}
-                style={{ padding: "26px 18px", borderRadius: 16, border: `1px solid ${t.border}`, background: t.bgCard, textAlign: "center", boxShadow: t.shadowCard, transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)", cursor: "pointer", flex: "1 1 min-content", minWidth: 195, maxWidth: 260 }}
+                style={{ padding: "26px 18px", borderRadius: 16, border: `1px solid ${t.border}`, background: t.bgCard, textAlign: "center", boxShadow: t.shadowCard, transition: "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)", cursor: "pointer", width: "100%", maxWidth: 280 }}
               >
                 {/* Avatar */}
                 {f.image ? (

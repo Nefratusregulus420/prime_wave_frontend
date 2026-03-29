@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useTheme, themes } from "../context/ThemeContext";
 import type { Page } from "./Navbar";
 import { motion } from "framer-motion";
-import homescreenImg from "../assets/Homescreen.png";
+import lightThemeImg from "../assets/Lighttheme.png";
+import darkThemeImg from "../assets/Darktheme.png";
 
 interface HeroProps {
   navigate: (p: Page) => void;
@@ -65,7 +66,7 @@ export default function Hero({ navigate }: HeroProps) {
         justifyContent: "center",
         position: "relative",
         overflow: "hidden",
-        padding: "100px 24px 60px",
+        padding: "72px 24px 40px",
         background: t.bg,
       }}
     >
@@ -85,141 +86,99 @@ export default function Hero({ navigate }: HeroProps) {
           gap: "40px",
         }}
       >
-        <div style={{ flex: "1 1 550px", display: "flex", flexDirection: "column", zIndex: 2 }}>
-          {/* Status badge */}
+        <div style={{ flex: "1 1 480px", display: "flex", flexDirection: "column", zIndex: 2 }}>
+
+          {/* Trusted-by badge */}
           <motion.div
             variants={itemVariants}
             style={{
               display: "inline-flex",
               alignItems: "center",
               gap: 8,
-              padding: "5px 14px",
-              borderRadius: 20,
-              border: `1px solid ${t.accent}35`,
-              background: t.accentSoft,
-              marginBottom: 32,
+              padding: "8px 22px 8px 16px",
+              borderRadius: 30,
+              background: isDark ? "rgba(255,255,255,0.05)" : "#f1f5f9",
+              marginBottom: 36,
+              width: "fit-content",
             }}
           >
+            <span style={{ fontSize: "0.9rem" }}>🚀</span>
+            <span style={{ fontSize: "0.9rem" }}>🔥</span>
             <span
               style={{
-                width: 6,
-                height: 6,
-                borderRadius: "50%",
-                background: t.accent,
-                display: "inline-block",
-                animation: "pulseDot 2s infinite, glowPulse 3s infinite",
-                boxShadow: `0 0 10px ${t.accent}`,
-              }}
-            />
-            <span
-              style={{
-                fontSize: "0.7rem",
-                color: t.accent,
-                letterSpacing: "0.1em",
-                fontWeight: 600,
+                fontSize: "0.75rem",
+                color: t.textSubtle,
+                fontWeight: 500,
+                marginLeft: 4,
               }}
             >
-              ENGINEERING EXCELLENCE
+              Trusted by{" "}
+              <strong style={{ color: t.text, fontWeight: 700 }}>10+ Brands</strong>
+              {" | "}
+              <span>Scalable E-Commerce Solutions</span>
             </span>
           </motion.div>
 
-          {/* Headline */}
+          {/* Main Headline — exactly 4 lines as in reference image */}
           <motion.h1
             variants={itemVariants}
             style={{
-              fontSize: "clamp(3.5rem, 9vw, 6.5rem)",
+              fontSize: "clamp(2.5rem, 5.5vw, 4.2rem)",
               fontWeight: 800,
-              lineHeight: 0.95,
-              letterSpacing: "-0.04em",
-              color: t.text,
-              marginBottom: 8,
+              lineHeight: 1.1,
+              letterSpacing: "-0.03em",
+              marginBottom: 0,
+              margin: 0,
+              display: "flex",
+              flexDirection: "column",
             }}
           >
-            Welcome to
+            <span style={{ color: t.text }}>Powering the</span>
+            <span style={{ color: t.text }}>Future of</span>
+            <span style={{ color: isDark ? "#4d8ef7" : "#2563eb" }}>Lifestyle &amp;</span>
+            <span style={{ color: isDark ? "#4d8ef7" : "#2563eb" }}>Electronics</span>
           </motion.h1>
 
-          <motion.h2
-            variants={itemVariants}
-            style={{
-              fontSize: "clamp(2rem, 5vw, 4.5rem)",
-              fontWeight: 800,
-              lineHeight: 0.9,
-              letterSpacing: "-0.04em",
-              marginBottom: 28,
-            }}
-          >
-            <span
-              style={{
-                backgroundImage: `linear-gradient(90deg, ${t.text} 0%, ${t.accent} 40%, ${t.text} 80%)`,
-                backgroundSize: "200% auto",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
-                color: "transparent",
-                animation: "shimmer 3s linear infinite",
-                display: "block",
-                marginBottom: 5
-              }}
-            >
-              PrimeWave
-            </span>
-            <span style={{
-              fontSize: '0.45em',
-              color: t.textSubtle,
-              fontWeight: 600,
-              letterSpacing: '0.2em',
-              textTransform: 'uppercase',
-              display: "block",
-              opacity: 0.8
-            }}>
-              Lifestyle & Electronics
-            </span>
-          </motion.h2>
-
-          {/* Typewriter */}
+          {/* Accent divider — matched to active blue */}
           <motion.div
             variants={itemVariants}
             style={{
-              fontSize: "clamp(0.85rem, 1.8vw, 1.1rem)",
-              color: t.textSubtle,
-              fontWeight: 500,
-              height: 34,
-              marginBottom: 36,
-              display: "flex",
-              alignItems: "center",
-              gap: 4,
+              width: 48,
+              height: 3,
+              background: isDark ? "#4d8ef7" : "#2563eb",
+              borderRadius: 4,
+              marginBottom: 20,
+              marginTop: 18,
+            }}
+          />
+
+          {/* Sub-headline */}
+          <motion.p
+            variants={itemVariants}
+            style={{
+              fontSize: "1.05rem",
+              fontWeight: 700,
+              color: t.text,
+              marginBottom: 12,
+              letterSpacing: "-0.01em",
             }}
           >
-            <span style={{ color: t.accent }}>$ </span>
-            <span>{typed}</span>
-            <span
-              style={{
-                display: "inline-block",
-                width: 2,
-                height: "1.1em",
-                background: t.accent,
-                animation: "blink 1s infinite",
-                borderRadius: 1,
-                marginLeft: 1,
-              }}
-            />
-          </motion.div>
+            Cloud-Native Commerce Infrastructure
+          </motion.p>
 
           {/* Description */}
           <motion.p
             variants={itemVariants}
             style={{
-              fontSize: "1.05rem",
-              lineHeight: 1.8,
+              fontSize: "0.95rem",
+              lineHeight: 1.7,
               color: t.textSubtle,
-              maxWidth: 580,
-              marginBottom: 44,
+              maxWidth: 420,
+              marginBottom: 38,
             }}
           >
-            <strong style={{ color: t.text, fontWeight: 600 }}>
-              Combining style, performance, and affordability.
-            </strong>
-            <br />PrimeWave Lifestyle & Electronics is a forward-thinking retail organization managing specialized e-commerce brands in clothing and consumer electronics.
+            Innovative e-commerce solutions combining style,
+            <br />performance, and affordability.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -230,47 +189,56 @@ export default function Hero({ navigate }: HeroProps) {
               display: "flex",
               gap: 14,
               flexWrap: "wrap",
-              marginBottom: 72,
+              marginBottom: 60,
+              justifyContent: "flex-start",
             }}
           >
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              onClick={() => navigate("industries")}
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 600,
-                letterSpacing: "0.05em",
-                padding: "12px 28px",
-                borderRadius: 8,
-                cursor: "pointer",
-                border: "1px solid transparent",
-                background: t.accent,
-                color: isDark ? "#0a0b0f" : "#fff",
-                transition: "all 0.2s",
-              }}
-              onMouseEnter={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = t.accentHover;
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = t.glowShadow;
-              }}
-              onMouseLeave={(e) => {
-                (e.currentTarget as HTMLButtonElement).style.background = t.accent;
-                (e.currentTarget as HTMLButtonElement).style.transform = "none";
-                (e.currentTarget as HTMLButtonElement).style.boxShadow = "none";
-              }}
-            >
-              Explore Industries →
-            </motion.button>
+            {/* Primary: Get Started (solid blue) */}
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.97 }}
               onClick={() => navigate("contact")}
               style={{
-                fontSize: "0.85rem",
+                fontSize: "0.88rem",
                 fontWeight: 600,
-                letterSpacing: "0.05em",
-                padding: "12px 28px",
+                letterSpacing: "0.02em",
+                padding: "13px 30px",
+                borderRadius: 8,
+                cursor: "pointer",
+                border: "1px solid transparent",
+                background: isDark ? "#4d8ef7" : "#2563eb",
+                color: "#fff",
+                transition: "all 0.3s ease",
+                boxShadow: isDark 
+                  ? "0 0 20px rgba(77, 142, 247, 0.4)" 
+                  : `0 4px 14px rgba(37, 99, 235, 0.3)`,
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = isDark ? "#6ba3fa" : "#1d4ed8";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = isDark
+                  ? "0 0 30px rgba(77, 142, 247, 0.6)"
+                  : `0 6px 20px rgba(37, 99, 235, 0.5)`;
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLButtonElement).style.background = isDark ? "#4d8ef7" : "#2563eb";
+                (e.currentTarget as HTMLButtonElement).style.boxShadow = isDark
+                  ? "0 0 20px rgba(77, 142, 247, 0.4)"
+                  : `0 4px 14px rgba(37, 99, 235, 0.3)`;
+              }}
+            >
+              Get Started
+            </motion.button>
+
+            {/* Secondary: Explore Industries (outline) */}
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => navigate("industries")}
+              style={{
+                fontSize: "0.88rem",
+                fontWeight: 700,
+                letterSpacing: "0.02em",
+                padding: "13px 28px",
                 borderRadius: 8,
                 cursor: "pointer",
                 border: `1px solid ${t.borderAccent}`,
@@ -282,16 +250,14 @@ export default function Hero({ navigate }: HeroProps) {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = t.accent;
                 (e.currentTarget as HTMLButtonElement).style.color = t.accent;
                 (e.currentTarget as HTMLButtonElement).style.background = t.accentSoft;
-                (e.currentTarget as HTMLButtonElement).style.transform = "translateY(-2px)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLButtonElement).style.borderColor = t.borderAccent;
                 (e.currentTarget as HTMLButtonElement).style.color = t.text;
                 (e.currentTarget as HTMLButtonElement).style.background = "transparent";
-                (e.currentTarget as HTMLButtonElement).style.transform = "none";
               }}
             >
-              Get In Touch
+              Explore Industries →
             </motion.button>
           </motion.div>
 
@@ -311,9 +277,9 @@ export default function Hero({ navigate }: HeroProps) {
               <div key={s.label}>
                 <div
                   style={{
-                    fontSize: "2.2rem",
+                    fontSize: "2.5rem",
                     fontWeight: 800,
-                    color: t.accent,
+                    color: isDark ? "#4d8ef7" : "#2563eb",
                     letterSpacing: "-0.04em",
                   }}
                 >
@@ -335,7 +301,7 @@ export default function Hero({ navigate }: HeroProps) {
           </motion.div>
         </div>
 
-        {/* Right Column: Image */}
+        {/* Right Column: floating products, completely blended with aggressive trim mask */}
         <motion.div
           variants={itemVariants}
           style={{
@@ -344,38 +310,31 @@ export default function Hero({ navigate }: HeroProps) {
             justifyContent: "center",
             alignItems: "center",
             zIndex: 1,
-            position: "relative"
+            position: "relative",
+            pointerEvents: "none",
           }}
         >
-          {/* Animated Glow Behind Image */}
-          <motion.div
-            animate={{ scale: [1, 1.1, 1], opacity: [0.15, 0.3, 0.15] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            style={{
-              position: "absolute",
-              width: "80%",
-              height: "80%",
-              background: `radial-gradient(circle, ${t.accent} 0%, transparent 70%)`,
-              filter: "blur(60px)",
-              zIndex: 0
-            }}
-          />
           <motion.img
-            src={homescreenImg}
-            alt="PrimeWave Homescreen"
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+            src={isDark ? darkThemeImg : lightThemeImg}
+            alt="PrimeWave Hero"
+            animate={{ y: [0, -12, 0] }}
+            transition={{ duration: 7, repeat: Infinity, ease: "easeInOut" }}
             style={{
-              width: "160%",
-              maxWidth: "1000px",
+              width: "100%",
+              maxWidth: "600px",
               height: "auto",
               objectFit: "contain",
-              WebkitMaskImage: "radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 72%)",
-              maskImage: "radial-gradient(circle at 50% 50%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 72%)",
-              filter: isDark ? "drop-shadow(0px 20px 40px rgba(0,0,0,0.6))" : "drop-shadow(0px 20px 40px rgba(0,0,0,0.15))",
+              /* Mix blend mode for seamless integration */
+              mixBlendMode: isDark ? "screen" : "multiply",
+              /* Extreme 4-side masking to kill any asset-level borders */
+              WebkitMaskImage: `linear-gradient(to bottom, transparent, black 12%, black 88%, transparent), 
+                               linear-gradient(to right, transparent, black 12%, black 88%, transparent)`,
+              WebkitMaskComposite: "source-in",
+              maskImage: `linear-gradient(to bottom, transparent, black 12%, black 88%, transparent), 
+                         linear-gradient(to right, transparent, black 12%, black 88%, transparent)`,
+              maskComposite: "intersect",
               position: "relative",
               zIndex: 1,
-              transform: "translateZ(0)"
             }}
           />
         </motion.div>
